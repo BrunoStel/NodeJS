@@ -1,0 +1,28 @@
+{{>partials/header}} <!--Usando parciais-->
+
+
+    Opa, tudo certo, {{user}}????
+
+    {{#showOld}} <!--Como o showOld é um boolena, se essa variavel for true ela exibe o que está dentro da tag-->
+        <p>Você é maior de idade</p>
+     {{/showOld}}
+     {{^showOld}} <!--Else de uma condicional, ou seja, se showOld for false cai aqui-->
+        <p>Você é menor de idade</p>
+     {{/showOld}}
+
+    <ul>
+        {{#products}} <!--Como o products é um array com objs, nesse caso, o mustache vai usar essa estrutura como um loop-->
+            <li>O produto {{title}} tem preço {{price}}</li> 
+        {{/products}}
+    </ul>
+
+      <ul>
+        {{#frases}} 
+            <li>{{.}}</li> <!--Como a lista é simples, ou seja, um array, colocando o . ele percorrerá todo array-->
+        {{/frases}}
+        {{^frases}} <!--Else de listas, caso nao haja nenhum elemento -->
+            Não há frases motivacionais hoje
+        {{/frases}}
+    </ul>
+
+{{>partials/footer}} <!--Usando parciais-->
