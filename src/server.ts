@@ -4,6 +4,10 @@ import path from 'path'
 //Importando o template engine
 import mustache from 'mustache-express'
 
+//Importando o dotenv para configurar a porta dinamicamente
+import dotenv from 'dotenv'
+dotenv.config()
+
 //Importando as rotas
 import mainRoutes from './routes/index'
 import painelRoutes from './routes/painel'
@@ -41,5 +45,5 @@ server.use((req:Request, res:Response)=>{ //Configurando a pagina 404
 
 
 //Ligando o servidor na postar 3000
-server.listen(3000)  //Acessar em http://localhost:3000
+server.listen(process.env.PORT)  //Acessar em http://localhost:3000
 //server.listen(80) - Acessar em http://localhost
