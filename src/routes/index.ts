@@ -1,5 +1,7 @@
 import {Router, Request, Response } from 'express'
 
+import * as HomeController from '../controllers/homeController'
+
 const router = Router()
 
 //Ex de rota estática
@@ -25,35 +27,9 @@ router.get('/pessoa/:nome', (req:Request, res:Response)=>{
 })
 
 
-//Utilizando engine template
-router.get('/',(req:Request, res:Response)=>{
-    let user: string = 'Bruno'
-    let age: number = 15
-    let showOld:boolean = false
+//Utilizando engine template - Explicaçoes no arquivo homeController (Conceito MVC)
+router.get('/', HomeController.products)
 
-    if(age>18){
-        showOld = true
-    }
-
-    let products = [
-        {title: 'Produto X', price:10},
-        {title: 'Produto Y', price:15},
-        {title: 'Produto Z', price:20}
-    ]
-
-    let frases = [
-        'Frase 1',
-        'Frase 2'
-    ]
-
-    res.render('pages/home',{
-        user, //Enviando variaveis para o mustache
-        showOld,
-        products,
-        frases
-    }) //Rendezirando como resposta, o HTML q tem nome 'home', só isso já basta, pois ja foi configurado
-    //a pasta q possui o html
-})
 
 router.get('/contato', (req:Request, res:Response)=>{
     res.render('pages/contato')
